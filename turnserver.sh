@@ -6,4 +6,10 @@ if [ ! -f "/external_ip" ]; then
       echo $EXTERNAL_IP > /external_ip
   fi
 fi
-exec /usr/bin/turnserver -n --log-file stdout --external-ip `cat /external_ip`
+exec /usr/bin/turnserver \
+	-n \
+	--log-file stdout \
+	--external-ip `cat /external_ip` \
+	-r zippy.ai \
+	--lt-cred-mech \
+	$*
